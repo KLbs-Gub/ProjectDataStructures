@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
 
     private Vector2 movement;
+    private Vector2 shootDirection;
     private Vector2 smoothedMovement;
     private Vector2 smoothedVelocity;
 
