@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraMain : MonoBehaviour
@@ -30,7 +29,7 @@ public class CameraMain : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            targetPoint.Set(0, 10, -10);
+            targetPoint.Set(0, camPos.transform.position.y + 10, -10);
         }
     }
 }
