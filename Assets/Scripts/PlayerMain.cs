@@ -36,11 +36,13 @@ public class Player : MonoBehaviour
     {
         MovementInput();
 
+        transform.localScale = new Vector2(1, 1);
         if (direction == 0) { animator.Play("IdleDown"); }
         if (direction == 1 || direction == -1) { 
             animator.Play("IdleHori");
             transform.localScale = new Vector2(direction, 1);
         }
+        if (direction == 2) { animator.Play("IdleUp"); }
     }
 
     // FixedUpdate makes things consistent across framerates
@@ -58,9 +60,13 @@ public class Player : MonoBehaviour
         float mx = Input.GetAxisRaw("Horizontal");
         float my = Input.GetAxisRaw("Vertical");
 
-        if (my > 0 || my < 0)
+        if (my < 0)
         {
             direction = 0;
+        }
+        else if (my > 0)
+        {
+            direction = 2;
         }
         else
         {
