@@ -1233,6 +1233,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!111 &1825023184
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825023176}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: 3b31484006929a1498c01dfd46750b1c, type: 2}
+  - {fileID: 7400000, guid: 081a462a7b9b41b48959fe1500417c7c, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1926958886
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,6 +1397,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5870081827660900708, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870081827660900708, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5870081827660900708, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1435,6 +1460,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5368966409921589157, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1825023181}
+    - targetCorrespondingSourceObject: {fileID: 5368966409921589157, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1825023184}
     - targetCorrespondingSourceObject: {fileID: 5368966409921589157, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1825023180}

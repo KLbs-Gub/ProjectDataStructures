@@ -5,9 +5,14 @@ using UnityEngine;
 [SelectionBase]
 public class Player : MonoBehaviour
 {
+    // Player Variables
     private float moveSpeed = 5.25f;
 
+    // Directions: 0 = down, 1 = left, -1 = right, 2 = up
+    private float direction = 0;
+
     private Rigidbody2D rb;
+    private Animator animator;
 
     private Vector2 movement;
     private Vector2 shootDirection;
@@ -18,6 +23,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -29,6 +35,12 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovementInput();
+
+        if (direction == 0) { animator.Play("IdleDown"); }
+        if (direction == 1 || direction == -1) { 
+            animator.Play("IdleHori");
+            transform.localScale = new Vector2(direction, 1);
+        }
     }
 
     // FixedUpdate makes things consistent across framerates
@@ -45,6 +57,15 @@ public class Player : MonoBehaviour
     {
         float mx = Input.GetAxisRaw("Horizontal");
         float my = Input.GetAxisRaw("Vertical");
+
+        if (my > 0 || my < 0)
+        {
+            direction = 0;
+        }
+        else
+        {
+            direction = mx * -1;
+        }
 
         movement = new Vector2(mx, my).normalized;
     }
