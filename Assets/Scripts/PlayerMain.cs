@@ -75,4 +75,6 @@ public class Player : MonoBehaviour
 
         movement = new Vector2(mx, my).normalized;
     }
+
+
 }
