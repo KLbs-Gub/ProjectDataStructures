@@ -16,7 +16,11 @@ public class CameraMain : MonoBehaviour
     public Vector3 TargetPoint
     {
         get { return this.targetPoint; }
-        set { this.targetPoint = value; }
+        set { 
+            this.targetPoint.x = value.x;
+            this.targetPoint.y = value.y;
+            this.targetPoint.z = -10;
+        }
     }
 
     // Methods
@@ -37,11 +41,4 @@ public class CameraMain : MonoBehaviour
         camPos.transform.position = Vector3.Lerp(camPos.transform.position, targetPoint, camSpeed * Time.deltaTime);
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "Player")
-        {
-            targetPoint.Set(0, camPos.transform.position.y + 10, -10);
-        }
-    }
 }
