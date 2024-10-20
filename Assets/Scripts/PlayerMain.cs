@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
     // Directions: 0 = down, 1 = left, -1 = right, 2 = up
     private float direction = 0;
 
+    private float shootTimer = 0;
+
     private Rigidbody2D rb;
     private Animator animator;
+    public Bullet bullet;
 
     private Vector2 movement;
     private Vector2 shootDirection;
@@ -38,6 +41,7 @@ public class Player : MonoBehaviour
     private void Update()
     {
         MovementInput();
+        Shoot();
 
         transform.localScale = new Vector2(1, 1);
         if (direction == 0) { animator.Play("IdleDown"); }
@@ -55,6 +59,8 @@ public class Player : MonoBehaviour
         smoothedMovement = Vector2.SmoothDamp(smoothedMovement, movement, ref smoothedVelocity, 0.075f);
 
         rb.velocity = smoothedMovement * moveSpeed;
+
+        shootTimer--;
     }
 
     // Gets movement from inputs
@@ -77,6 +83,26 @@ public class Player : MonoBehaviour
         }
 
         movement = new Vector2(mx, my).normalized;
+    }
+
+    private void Shoot()
+    {
+        shootDirection.x = Input.GetAxisRaw("Fire2");
+        shootDirection.y = Input.GetAxisRaw("Fire1");
+
+        if (shootDirection.x != 0 || shootDirection.y != 0)
+        {
+            if (shootTimer <= 0)
+            {
+                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, transform.position.y + shootDirection.y);
+
+                Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
+
+                shot.ShotVector = shootDirection;
+
+                shootTimer = 30;
+            }
+        }
     }
 
 

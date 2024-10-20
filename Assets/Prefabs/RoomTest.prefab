@@ -790,7 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3308962209645536939}
   - component: {fileID: 4126818707269790010}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: RoomTest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
