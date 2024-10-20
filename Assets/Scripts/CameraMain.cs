@@ -12,6 +12,15 @@ public class CameraMain : MonoBehaviour
     private Camera camPos;
     private Vector3 targetPoint = new Vector3(0, 0, -10);
 
+    // Gets and sets
+    public Vector3 TargetPoint
+    {
+        get { return this.targetPoint; }
+        set { this.targetPoint = value; }
+    }
+
+    // Methods
+
     private void Awake()
     {
         camPos = gameObject.GetComponent<Camera>();

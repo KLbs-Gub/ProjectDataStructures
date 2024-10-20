@@ -25,6 +25,8 @@ public class Player : MonoBehaviour
     private Vector2 smoothedMovement;
     private Vector2 smoothedVelocity;
 
+    // Methods
+
     // Start and Awake are called before the first frame update
     private void Awake()
     {
