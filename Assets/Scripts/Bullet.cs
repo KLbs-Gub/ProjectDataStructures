@@ -19,8 +19,6 @@ public class Bullet : MonoBehaviour
 
     private Vector2 shotVector;
 
-    private Rigidbody2D rb;
-
     // Gets and Sets
 
     public Vector2 ShotVector
@@ -51,9 +49,6 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Collided with: " + collision2D.name);
-        
-        Destroy(gameObject);
         if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);

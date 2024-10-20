@@ -14,8 +14,6 @@ public class Player : MonoBehaviour
     // Directions: 0 = down, 1 = left, -1 = right, 2 = up
     private float direction = 0;
 
-    private float shootTimer = 0;
-
     private Rigidbody2D rb;
     private Animator animator;
     public Bullet bullet;
@@ -25,12 +23,9 @@ public class Player : MonoBehaviour
     private Vector2 smoothedVelocity;
 
     //Gun Variables
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform firingPoint;
-    [Range(0.1f, 1f)]
-    [SerializeField] private float fireRate = 0.5f;
-    private float fireTimer;
-    private float shootDirection;
+    [SerializeField] private float fireRate = 0.0f;
+    private float shootTimer;
+    private Vector2 shootDirection;
 
     // Methods
 
@@ -49,23 +44,17 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Shoot();
         MovementInput();
         SpriteDirection();
+
         //checks if any firing inputs are happening, then proceeds
-        if (Input.GetAxisRaw("Fire1") != 0 && fireTimer <= 0f || 
-            Input.GetAxisRaw("Fire2") != 0 && fireTimer <= 0f)
+        if (Input.GetAxisRaw("Fire1") != 0 && shootTimer <= 0f || 
+            Input.GetAxisRaw("Fire2") != 0 && shootTimer <= 0f)
         {
             Shoot();
-            fireTimer = fireRate;
-        }
-        else
-        {
-            fireTimer -= Time.deltaTime;
         }
 
-
-
+        // Animation code
         transform.localScale = new Vector2(1, 1);
         if (direction == 0) { animator.Play("IdleDown"); }
         if (direction == 1 || direction == -1) { 
@@ -96,35 +85,12 @@ public class Player : MonoBehaviour
         movement = new Vector2(mx, my).normalized;
     }
 
-    //shooting code
-    private void Shoot()
-    {
-        //finds angle for gun, interprets into degrees
-        float rotateAngle = 0.0f;
-        if (shootDirection == 0)
-        {
-            rotateAngle = 180;
-        }
-        else if (shootDirection == 2)
-        {
-            rotateAngle = 0;
-        }
-        else
-        {
-            rotateAngle = 90.0f * shootDirection;
-        }
-        //Wacky physics Quaternion
-        //talk to Matthew Kopel (me) if you want rough breakdown
-        Quaternion target = Quaternion.Euler(0, 0, rotateAngle);
-        firingPoint.rotation = Quaternion.Slerp(firingPoint.rotation, target, 1);
-
-        Instantiate(bulletPrefab, firingPoint.position, firingPoint.rotation);
-    }
+  
 
     //angle checking for what sprites to use
     private void SpriteDirection()
     {
-        if (Input.GetAxisRaw("Fire1") != 0 || Input.GetAxisRaw("Fire2") !=0)
+        if (Input.GetAxisRaw("Fire1") != 0 || Input.GetAxisRaw("Fire2") != 0)
         {
             ShootAngle();
         }
@@ -138,8 +104,7 @@ public class Player : MonoBehaviour
         float mx = Input.GetAxisRaw("Horizontal");
         float my = Input.GetAxisRaw("Vertical");
 
-        if (my < 0)
-        if (shootDirection == Vector2.zero)
+        if (shootTimer <= 0)
         {
             if (my < 0)
             {
@@ -172,42 +137,31 @@ public class Player : MonoBehaviour
         {
             direction = sx * -1;
         }
-        shootDirection = direction;
     }
     private void Shoot()
     {
         if (shootDirection.y == 0)
         {
-            shootDirection.x = Input.GetAxisRaw("Fire2");
-            direction = -shootDirection.x;
+            shootDirection.x = Input.GetAxisRaw("Fire1");
         }
         if (shootDirection.x == 0)
         {
-            shootDirection.y = Input.GetAxisRaw("Fire1");
-            if (shootDirection.y == 1)
-            {
-                direction = 2;
-            }
-            else
-            {
-                direction = 0;
-            }
+            shootDirection.y = Input.GetAxisRaw("Fire2");
         }
 
         if (shootDirection.x != 0 || shootDirection.y != 0)
         {
             if (shootTimer <= 0)
             {
-                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.25f);
+                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.15f);
 
                 Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
                 shot.Speed = 11f;
                 shot.ShotVector = shootDirection.normalized;
 
-                shootTimer = 30;
+                shootTimer = 30 - fireRate;
             }
         }
     }
-
 
 }
