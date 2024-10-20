@@ -15,8 +15,8 @@ public class Bullet : MonoBehaviour
     [SerializeField] private float lifeTime = 5f;
 
     private Vector2 movement;
-
     private Rigidbody2D rb;
+
 
     // Start is called before the first frame update
     private void Start()
@@ -33,6 +33,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
         Debug.Log("Collided with: " + collision2D.name);
+        
         Destroy(gameObject);
     }
 
