@@ -14,8 +14,11 @@ public class Player : MonoBehaviour
     // Directions: 0 = down, 1 = left, -1 = right, 2 = up
     private float direction = 0;
 
+    private float shootTimer = 0;
+
     private Rigidbody2D rb;
     private Animator animator;
+    public Bullet bullet;
 
     private Vector2 movement;
     private Vector2 smoothedMovement;
@@ -29,6 +32,7 @@ public class Player : MonoBehaviour
     private float fireTimer;
     private float shootDirection;
 
+    // Methods
 
     // Start and Awake are called before the first frame update
     private void Awake()
@@ -45,6 +49,7 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
+        Shoot();
         MovementInput();
         SpriteDirection();
         //checks if any firing inputs are happening, then proceeds
@@ -78,6 +83,8 @@ public class Player : MonoBehaviour
         smoothedMovement = Vector2.SmoothDamp(smoothedMovement, movement, ref smoothedVelocity, 0.075f);
 
         rb.velocity = smoothedMovement * moveSpeed;
+
+        shootTimer--;
     }
 
     // Gets movement from inputs
@@ -132,16 +139,20 @@ public class Player : MonoBehaviour
         float my = Input.GetAxisRaw("Vertical");
 
         if (my < 0)
+        if (shootDirection == Vector2.zero)
         {
-            direction = 0;
-        }
-        else if (my > 0)
-        {
-            direction = 2;
-        }
-        else
-        {
-            direction = mx * -1;
+            if (my < 0)
+            {
+                direction = 0;
+            }
+            else if (my > 0)
+            {
+                direction = 2;
+            }
+            else
+            {
+                direction = mx * -1;
+            }
         }
     }
     private void ShootAngle()
@@ -163,4 +174,40 @@ public class Player : MonoBehaviour
         }
         shootDirection = direction;
     }
+    private void Shoot()
+    {
+        if (shootDirection.y == 0)
+        {
+            shootDirection.x = Input.GetAxisRaw("Fire2");
+            direction = -shootDirection.x;
+        }
+        if (shootDirection.x == 0)
+        {
+            shootDirection.y = Input.GetAxisRaw("Fire1");
+            if (shootDirection.y == 1)
+            {
+                direction = 2;
+            }
+            else
+            {
+                direction = 0;
+            }
+        }
+
+        if (shootDirection.x != 0 || shootDirection.y != 0)
+        {
+            if (shootTimer <= 0)
+            {
+                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.25f);
+
+                Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
+                shot.Speed = 11f;
+                shot.ShotVector = shootDirection.normalized;
+
+                shootTimer = 30;
+            }
+        }
+    }
+
+
 }
