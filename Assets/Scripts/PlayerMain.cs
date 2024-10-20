@@ -42,8 +42,8 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        MovementInput();
         Shoot();
+        MovementInput();
 
         transform.localScale = new Vector2(1, 1);
         if (direction == 0) { animator.Play("IdleDown"); }
@@ -71,17 +71,20 @@ public class Player : MonoBehaviour
         float mx = Input.GetAxisRaw("Horizontal");
         float my = Input.GetAxisRaw("Vertical");
 
-        if (my < 0)
+        if (shootDirection == Vector2.zero)
         {
-            direction = 0;
-        }
-        else if (my > 0)
-        {
-            direction = 2;
-        }
-        else
-        {
-            direction = mx * -1;
+            if (my < 0)
+            {
+                direction = 0;
+            }
+            else if (my > 0)
+            {
+                direction = 2;
+            }
+            else
+            {
+                direction = mx * -1;
+            }
         }
 
         movement = new Vector2(mx, my).normalized;
@@ -89,18 +92,33 @@ public class Player : MonoBehaviour
 
     private void Shoot()
     {
-        shootDirection.x = Input.GetAxisRaw("Fire2");
-        shootDirection.y = Input.GetAxisRaw("Fire1");
+        if (shootDirection.y == 0)
+        {
+            shootDirection.x = Input.GetAxisRaw("Fire2");
+            direction = -shootDirection.x;
+        }
+        if (shootDirection.x == 0)
+        {
+            shootDirection.y = Input.GetAxisRaw("Fire1");
+            if (shootDirection.y == 1)
+            {
+                direction = 2;
+            }
+            else
+            {
+                direction = 0;
+            }
+        }
 
         if (shootDirection.x != 0 || shootDirection.y != 0)
         {
             if (shootTimer <= 0)
             {
-                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, transform.position.y + shootDirection.y);
+                Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.25f);
 
                 Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
-
-                shot.ShotVector = shootDirection;
+                shot.Speed = 11f;
+                shot.ShotVector = shootDirection.normalized;
 
                 shootTimer = 30;
             }

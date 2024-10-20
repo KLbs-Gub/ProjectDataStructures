@@ -26,6 +26,14 @@ public class Bullet : MonoBehaviour
         set { this.shotVector = value; }
     }
 
+    public float Speed
+    {
+        get { return this.speed; }
+        set { this.speed = value; }
+    }
+
+    // Methods
+
     // Start is called before the first frame update
     private void Start()
     {
