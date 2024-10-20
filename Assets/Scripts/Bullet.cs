@@ -6,11 +6,15 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    // Variables
     [Range(1, 10)]
     [SerializeField] private float speed = 10f;
 
+
     [Range(1, 10)]
     [SerializeField] private float lifeTime = 5f;
+
+    private Vector2 movement;
 
     private Rigidbody2D rb;
 
@@ -28,8 +32,10 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision2D)
     {
+        Debug.Log("Collided with: " + collision2D.name);
         Destroy(gameObject);
     }
+
     // Update is called once per frame
     void Update()
     {
