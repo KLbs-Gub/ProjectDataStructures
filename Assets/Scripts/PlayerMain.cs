@@ -56,12 +56,26 @@ public class Player : MonoBehaviour
 
         // Animation code
         transform.localScale = new Vector2(1, 1);
-        if (direction == 0) { animator.Play("IdleDown"); }
-        if (direction == 1 || direction == -1) { 
-            animator.Play("IdleHori");
-            transform.localScale = new Vector2(direction, 1);
+        if (movement == Vector2.zero)
+        {
+            if (direction == 0) { animator.Play("IdleDown"); }
+            if (direction == 1 || direction == -1)
+            {
+                animator.Play("IdleHori");
+                transform.localScale = new Vector2(direction, 1);
+            }
+            if (direction == 2) { animator.Play("IdleUp"); }
         }
-        if (direction == 2) { animator.Play("IdleUp"); }
+        else
+        {
+            if (direction == 0) { animator.Play("WalkDown"); }
+            if (direction == 1 || direction == -1)
+            {
+                animator.Play("WalkHori");
+                transform.localScale = new Vector2(direction, 1);
+            }
+            if (direction == 2) { animator.Play("WalkUp"); }
+        }
         
     }
 
