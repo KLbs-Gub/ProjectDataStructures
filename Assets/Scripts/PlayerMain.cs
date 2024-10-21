@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     private Rigidbody2D rb;
     private Animator animator;
-    public Bullet bullet;
+    [SerializeField] private Bullet bullet;
 
     private Vector2 movement;
     private Vector2 smoothedMovement;
@@ -157,7 +157,10 @@ public class Player : MonoBehaviour
 
                 Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
                 shot.Speed = 11f;
-                shot.ShotVector = shootDirection.normalized;
+                // I add (smoothedMovement / 6) to transfer some movement velocity to the bullet
+                // we may need to weak this later.
+                shot.ShotVector = shootDirection.normalized + (smoothedMovement / 6);
+                Debug.Log("ShotVector: " + shot.ShotVector);
 
                 shootTimer = 30 - fireRate;
             }
