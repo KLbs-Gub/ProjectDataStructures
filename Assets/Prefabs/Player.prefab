@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1698988203586104089}
   - component: {fileID: 1369664855226673399}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,9 +99,9 @@ GameObject:
   - component: {fileID: 1673641270237086822}
   - component: {fileID: 3878614864520477523}
   - component: {fileID: 4365526270172188035}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
