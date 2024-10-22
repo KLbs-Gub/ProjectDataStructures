@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private Vector2 smoothedVelocity;
 
     //Gun Variables
-    [SerializeField] private float fireRate = 0.0f;
+    [Range(0.0f, 30.0f)][SerializeField] private float fireRate = 0.0f;
     private float shootTimer;
     private Vector2 shootDirection;
 
