@@ -261,7 +261,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.6, y: 0.6}
   m_Direction: 0
 --- !u!114 &2971721082991730220
 MonoBehaviour:
@@ -276,4 +276,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3.94
-  lifeTime: 5
+  lifeTime: 4

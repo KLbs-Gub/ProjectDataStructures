@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Room : MonoBehaviour
 {
-    public GameObject mainCam;
+    private GameObject mainCam;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        mainCam = GameObject.Find("Main Camera");
     }
 
     // Update is called once per frame
@@ -20,6 +20,9 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
+        if (mainCam != null)
+        {
+            mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
+        }
     }
 }

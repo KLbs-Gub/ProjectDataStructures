@@ -790,6 +790,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3308962209645536939}
   - component: {fileID: 4126818707269790010}
+  - component: {fileID: 5967932242152797055}
   m_Layer: 6
   m_Name: RoomTest
   m_TagString: Untagged
@@ -865,6 +866,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 16.8, y: 8.9}
   m_EdgeRadius: 0
+--- !u!114 &5967932242152797055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6499227140924800369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29bb5dc05fdc3c440b6e1580083f78e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
 --- !u!1 &7677846230924552793
 GameObject:
   m_ObjectHideFlags: 0

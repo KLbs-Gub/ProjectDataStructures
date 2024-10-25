@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 
         // Animation code
         transform.localScale = new Vector2(1, 1);
-        if (movement == Vector2.zero)
+        if (movement == Vector2.zero) // If the player isn't moving
         {
             if (direction == 0) { animator.Play("IdleDown"); }
             if (direction == 1 || direction == -1)
@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
             }
             if (direction == 2) { animator.Play("IdleUp"); }
         }
-        else
+        else // If the player is moving
         {
             if (direction == 0) { animator.Play("WalkDown"); }
             if (direction == 1 || direction == -1)
@@ -174,7 +174,7 @@ public class Player : MonoBehaviour
                 // I add (smoothedMovement / 6) to transfer some movement velocity to the bullet
                 // we may need to weak this later.
                 shot.ShotVector = shootDirection.normalized + (smoothedMovement / 6);
-                Debug.Log("ShotVector: " + shot.ShotVector);
+                // Debug.Log("ShotVector: " + shot.ShotVector);
 
                 shootTimer = 30 - fireRate;
             }
