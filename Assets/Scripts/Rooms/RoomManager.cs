@@ -34,7 +34,7 @@ public class RoomManager : MonoBehaviour
                 transformOffset = new Vector3(17.8f * i, 10 * j, 0);
                 Room newRoom = Instantiate(room, transformOffset, transform.rotation);
 
-                // Make sure rooms on the edges have walls to the void blocked off.
+                // Make sure rooms on the edges have holes to the void blocked off.
                 if (j == rows - 1) newRoom.EnableBlocker("EntranceUp");
                 if (i == 0) newRoom.EnableBlocker("EntranceLeft");
                 if (j == 0) newRoom.EnableBlocker("EntranceDown");
