@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1d31f0db04c56a449d63f1f7f15a0ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  room: {fileID: 6499227140924800369, guid: cef5568ad9ba904439d535b95be99a78, type: 3}
+  room: {fileID: 5967932242152797055, guid: cef5568ad9ba904439d535b95be99a78, type: 3}
   columns: 6
   rows: 4
 --- !u!1 &1216680667

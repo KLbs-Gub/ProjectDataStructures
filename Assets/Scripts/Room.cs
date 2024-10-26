@@ -6,7 +6,17 @@ public class Room : MonoBehaviour
 {
     private GameObject mainCam;
 
+    [SerializeField] private GameObject[] entranceBlockers = new GameObject[4];
+
     // Start is called before the first frame update
+    private void Awake()
+    {
+        foreach (GameObject gameObject in entranceBlockers)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void Start()
     {
         mainCam = GameObject.Find("Main Camera");
@@ -23,6 +33,18 @@ public class Room : MonoBehaviour
         if (mainCam != null)
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
+        }
+    }
+
+    public void EnableBlocker(string aBlocker)
+    {
+        foreach (GameObject gameObject in entranceBlockers)
+        {
+            if (gameObject.name == aBlocker)
+            {
+                //Debug.Log("Blocked an: " +  gameObject.name);
+                gameObject.SetActive(true);
+            }
         }
     }
 }
