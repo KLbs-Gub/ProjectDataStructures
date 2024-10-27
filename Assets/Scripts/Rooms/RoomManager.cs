@@ -57,6 +57,9 @@ public class RoomManager : MonoBehaviour
                     camera.GetComponent<CameraMain>().TargetPoint = new Vector3(transformOffset.x, transformOffset.y, 1);
                     camera.transform.position = transformOffset;
 
+                    // Make sure the player spawn room doesn't have any enemies.
+                    newRoom.roomState = 0;
+
                     playerRoomCountdown = 99999;
                 }
                 else if (shopRoomCountdown < 0)

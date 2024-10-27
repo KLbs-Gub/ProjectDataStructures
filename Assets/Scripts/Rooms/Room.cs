@@ -11,12 +11,13 @@ public class Room : MonoBehaviour
     // 2 = waiting, 1 = active, 0 = complete
     [HideInInspector] public int roomState = 2;
     [HideInInspector] public int wavePopulation;
+    private float spawnTimer = 50f;
     public GameObject enemy;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        wavePopulation = Random.Range(0, 0);
+        wavePopulation = 12;
 
         foreach (GameObject gameObject in entranceBlockers)
         {
@@ -32,7 +33,7 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (roomState == 1 && wavePopulation > 0)
+        if (roomState == 1 && wavePopulation > 0 && spawnTimer < 0)
         {
             Vector2 transformOffset = new Vector2(transform.position.x, transform.position.y + 10);
             Instantiate(enemy, transformOffset, transform.rotation);
@@ -40,14 +41,17 @@ public class Room : MonoBehaviour
             transformOffset = new Vector2(transform.position.x, transform.position.y - 10);
             Instantiate(enemy, transformOffset, transform.rotation);
 
-            transformOffset = new Vector2(transform.position.x + 8, transform.position.y);
+            transformOffset = new Vector2(transform.position.x + 10, transform.position.y);
             Instantiate(enemy, transformOffset, transform.rotation);
 
-            transformOffset = new Vector2(transform.position.x - 8, transform.position.y);
+            transformOffset = new Vector2(transform.position.x - 10, transform.position.y);
             Instantiate(enemy, transformOffset, transform.rotation);
 
             wavePopulation -= 4;
+            spawnTimer = 50f;
         }
+
+        spawnTimer--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

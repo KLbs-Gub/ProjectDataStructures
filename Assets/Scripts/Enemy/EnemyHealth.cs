@@ -8,7 +8,7 @@ using UnityEngine;
 public class EnemyHealth : MonoBehaviour
 {
     public float Health = 1f;
-    public static event Action OnEnemyDeath;
+    public EnemyBase parentEnemy;
     
     //Enemy health function, made seperately so we could paste into other enemies
     public void EnemyDamaged(int amount)
@@ -17,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
         if (Health <= 0)
         {
             Debug.Log("Enemy Killed");
-            OnEnemyDeath?.Invoke();
+            parentEnemy.EnemyKilled();
         }
     }
 }

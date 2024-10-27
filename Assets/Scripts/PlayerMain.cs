@@ -44,15 +44,15 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        MovementInput();
-        SpriteDirection();
-
         //checks if any firing inputs are happening, then proceeds
         if (Input.GetAxisRaw("Fire1") != 0 && shootTimer <= 0f || 
             Input.GetAxisRaw("Fire2") != 0 && shootTimer <= 0f)
         {
             Shoot();
         }
+
+        MovementInput();
+        SpriteDirection();
 
         // Animation code
         transform.localScale = new Vector2(1, 1);
@@ -139,15 +139,15 @@ public class Player : MonoBehaviour
         float sx = Input.GetAxisRaw("Fire1");
         float sy = Input.GetAxisRaw("Fire2");
 
-        if (sy < 0)
+        if (sy < 0 && sx == 0)
         {
             direction = 0;
         }
-        else if (sy > 0)
+        else if (sy > 0 && sx == 0)
         {
             direction = 2;
         }
-        else
+        else if (sy == 0)
         {
             direction = sx * -1;
         }

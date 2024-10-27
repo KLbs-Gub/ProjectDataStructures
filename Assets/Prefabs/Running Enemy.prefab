@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8103070323978519780}
   - component: {fileID: 4107922791204440416}
   - component: {fileID: 7023483409901292764}
-  - component: {fileID: 3322917796637482827}
+  - component: {fileID: 2734678336504616787}
   - component: {fileID: 2649671642355845445}
   - component: {fileID: 4925663110240206395}
   - component: {fileID: -1511030628047199263}
@@ -78,7 +78,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: -2413806693520163455, guid: cdc3792864b8fe04e816489f03920b9c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,8 +102,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 20
+  m_AngularDrag: 20
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -116,8 +116,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!70 &3322917796637482827
-CapsuleCollider2D:
+--- !u!58 &2734678336504616787
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -131,7 +131,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 0
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -149,8 +149,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
-  m_Direction: 0
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!114 &2649671642355845445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,7 +165,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   moveSpeed: 2
-  hp: {fileID: -1511030628047199263}
 --- !u!114 &4925663110240206395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -191,3 +190,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 4
+  parentEnemy: {fileID: 2649671642355845445}

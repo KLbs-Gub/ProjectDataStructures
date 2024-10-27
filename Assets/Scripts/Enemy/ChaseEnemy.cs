@@ -4,21 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChaseEnemy : MonoBehaviour
+public class ChaseEnemy : EnemyBase
 {
     //Variables
     [HideInInspector] public GameObject target;
     public float moveSpeed = 1f;
-    public EnemyHealth hp;
-
-    private void OnEnable()
-    {
-        EnemyHealth.OnEnemyDeath += enemyKilled;
-    }
-    private void OnDisable()
-    {
-        EnemyHealth.OnEnemyDeath -= enemyKilled;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +29,7 @@ public class ChaseEnemy : MonoBehaviour
             moveSpeed * Time.deltaTime);
     }
 
-    private void enemyKilled()
+    public override void EnemyKilled()
     {
         Destroy(gameObject);
     }
