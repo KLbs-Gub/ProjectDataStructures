@@ -26,9 +26,9 @@ public class RoomManager : MonoBehaviour
     private void GenerateRooms()
     {
         // Variables used to determine when to generate a special room.
-        int playerRoomCountdown = Random.Range(0, rows + columns);
-        int shopRoomCountdown = Random.Range(0, rows + columns);
-        int bossRoomCountdown = Random.Range(0, rows + columns);
+        int playerRoomCountdown = Random.Range(0, rows * columns);
+        int shopRoomCountdown = Random.Range(0, rows * columns);
+        int bossRoomCountdown = Random.Range(0, rows * columns);
 
         for (int i = 0; i < columns; i++)
         {
