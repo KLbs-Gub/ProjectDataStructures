@@ -423,8 +423,8 @@ MonoBehaviour:
   levels:
   - {fileID: 11400000, guid: c7fa636af03064442b2943dc718b1aac, type: 2}
   currentLevel: 0
-  columns: 6
-  rows: 4
+  columns: 5
+  rows: 5
 --- !u!1 &1216680667
 GameObject:
   m_ObjectHideFlags: 0
