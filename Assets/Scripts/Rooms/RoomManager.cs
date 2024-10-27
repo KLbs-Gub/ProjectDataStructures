@@ -11,10 +11,6 @@ public class RoomManager : MonoBehaviour
     public List<Level1ScriptObject> levels;
     public int currentLevel = 0;
 
-    private List<GameObject> normalRooms;
-    private List<GameObject> shopRooms;
-    private List<GameObject> bossRooms;
-
     [Range(1, 15)][SerializeField] private int columns;
     [Range(1, 15)][SerializeField] private int rows;
     private Vector3 transformOffset;
@@ -22,8 +18,6 @@ public class RoomManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PopulateRoomLists();
-
         // Run this last
         GenerateRooms();
     }
@@ -55,23 +49,15 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    // Get the rooms from the level scriptable objects
-    private void PopulateRoomLists()
-    {
-        normalRooms = levels[currentLevel].normalRoomLayoutsList;
-        shopRooms = levels[currentLevel].shopRoomLayoutsList;
-        bossRooms = levels[currentLevel].bossRoomLayoutsList;
-    }
-
     // Add a room layout to the room at the transform offset.
     private void AddLayout(string layoutType)
     {
         int roomSelect;
         if (layoutType == "normal")
         {
-            roomSelect = Random.Range(0, normalRooms.Count);
+            roomSelect = Random.Range(0, levels[currentLevel].normalRoomLayoutsList.Count);
 
-            GameObject layout = Instantiate(normalRooms[roomSelect], transformOffset, transform.rotation);
+            GameObject layout = Instantiate(levels[currentLevel].normalRoomLayoutsList[roomSelect], transformOffset, transform.rotation);
         }
     }
 }
