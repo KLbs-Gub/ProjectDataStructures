@@ -66,6 +66,10 @@ public class Level1ScriptObject : ScriptableObject
         {
             Debug.LogWarning(message);
         }
+        else
+        {
+            Debug.ClearDeveloperConsole();
+        }
     }
 
 #endif
