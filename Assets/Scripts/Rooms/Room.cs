@@ -8,13 +8,15 @@ public class Room : MonoBehaviour
 
     [SerializeField] private GameObject[] entranceBlockers = new GameObject[4];
 
-    [HideInInspector] public bool roomComplete = false;
+    // 2 = waiting, 1 = active, 0 = complete
+    [HideInInspector] public int roomState = 2;
     [HideInInspector] public int wavePopulation;
+    public GameObject enemy;
 
     // Start is called before the first frame update
     private void Awake()
     {
-        wavePopulation = Random.Range(7, 18);
+        wavePopulation = Random.Range(0, 0);
 
         foreach (GameObject gameObject in entranceBlockers)
         {
@@ -28,9 +30,24 @@ public class Room : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
+        if (roomState == 1 && wavePopulation > 0)
+        {
+            Vector2 transformOffset = new Vector2(transform.position.x, transform.position.y + 10);
+            Instantiate(enemy, transformOffset, transform.rotation);
+            
+            transformOffset = new Vector2(transform.position.x, transform.position.y - 10);
+            Instantiate(enemy, transformOffset, transform.rotation);
+
+            transformOffset = new Vector2(transform.position.x + 8, transform.position.y);
+            Instantiate(enemy, transformOffset, transform.rotation);
+
+            transformOffset = new Vector2(transform.position.x - 8, transform.position.y);
+            Instantiate(enemy, transformOffset, transform.rotation);
+
+            wavePopulation -= 4;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -38,6 +55,11 @@ public class Room : MonoBehaviour
         if (mainCam != null)
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
+        }
+
+        if (roomState == 2)
+        {
+            roomState = 1;
         }
     }
 
