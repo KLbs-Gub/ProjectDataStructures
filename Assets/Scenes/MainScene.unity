@@ -420,6 +420,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   room: {fileID: 5967932242152797055, guid: cef5568ad9ba904439d535b95be99a78, type: 3}
+  levels:
+  - {fileID: 11400000, guid: c7fa636af03064442b2943dc718b1aac, type: 2}
+  currentLevel: 0
   columns: 6
   rows: 4
 --- !u!1 &1216680667
