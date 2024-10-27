@@ -17,6 +17,7 @@ MonoBehaviour:
   - {fileID: 1729503848249850364, guid: 65e943884bc7fd44fbdf3245ea9c9cb1, type: 3}
   - {fileID: 1828656503466776389, guid: 4ff4697ccd63fee4488ad7c8c5cd38e5, type: 3}
   - {fileID: 1828656503466776389, guid: 482ec69239935c54f87963d064f66c79, type: 3}
+  - {fileID: 1828656503466776389, guid: 4250e3b91652e304db9838762036bbca, type: 3}
   shopRoomLayoutsList:
   - {fileID: 1828656503466776389, guid: c7895d2585092cb4bb4a742d572d20b1, type: 3}
   bossRoomLayoutsList:

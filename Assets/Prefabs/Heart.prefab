@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0.013001442, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -109,5 +109,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f7c4b21222d8ad43b9b76856c810a94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fullHeart: {fileID: 7482667652216324306, guid: f618f720154e5e54fa55f8cccc177536, type: 3}
-  emptyHeart: {fileID: -2413806693520163455, guid: cdc3792864b8fe04e816489f03920b9c, type: 3}
+  fullHeart: {fileID: 21300000, guid: ce0024bcde1de984d97ee859aa8e8bdb, type: 3}
+  emptyHeart: {fileID: 21300000, guid: 28bfd0b971351be4eb06f1838bfa1c53, type: 3}

@@ -17,7 +17,7 @@ public class Room : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        wavePopulation = 12;
+        wavePopulation = 8;
 
         foreach (GameObject gameObject in entranceBlockers)
         {
@@ -35,16 +35,16 @@ public class Room : MonoBehaviour
     {
         if (roomState == 1 && wavePopulation > 0 && spawnTimer < 0)
         {
-            Vector2 transformOffset = new Vector2(transform.position.x, transform.position.y + 10);
+            Vector2 transformOffset = new Vector2(transform.position.x, transform.position.y + 9);
             Instantiate(enemy, transformOffset, transform.rotation);
             
-            transformOffset = new Vector2(transform.position.x, transform.position.y - 10);
+            transformOffset = new Vector2(transform.position.x, transform.position.y - 9);
             Instantiate(enemy, transformOffset, transform.rotation);
 
-            transformOffset = new Vector2(transform.position.x + 10, transform.position.y);
+            transformOffset = new Vector2(transform.position.x + 11, transform.position.y);
             Instantiate(enemy, transformOffset, transform.rotation);
 
-            transformOffset = new Vector2(transform.position.x - 10, transform.position.y);
+            transformOffset = new Vector2(transform.position.x - 11, transform.position.y);
             Instantiate(enemy, transformOffset, transform.rotation);
 
             wavePopulation -= 4;

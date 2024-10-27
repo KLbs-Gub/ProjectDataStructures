@@ -19,7 +19,14 @@ public class ChaseEnemy : EnemyBase
     // Update is called once per frame
     void Update()
     {
-
+        if (target.transform.position.x < transform.position.x)
+        {
+            transform.localScale = new Vector2(-1, 1);
+        }
+        else
+        {
+            transform.localScale = new Vector2(1, 1);
+        }
     }
 
     private void FixedUpdate()

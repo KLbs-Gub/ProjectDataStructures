@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 4107922791204440416}
   - component: {fileID: 7023483409901292764}
   - component: {fileID: 2734678336504616787}
+  - component: {fileID: 7034930029948266860}
+  - component: {fileID: 6117208965588579456}
   - component: {fileID: 2649671642355845445}
   - component: {fileID: 4925663110240206395}
   - component: {fileID: -1511030628047199263}
@@ -78,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: cdc3792864b8fe04e816489f03920b9c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5d7df7fa232e20c41a6bdf0609c944c6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -150,7 +152,43 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.55
+--- !u!111 &7034930029948266860
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081219691268633862}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
+--- !u!95 &6117208965588579456
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081219691268633862}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d0d14789cd612474a8c2bee1535b749b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!114 &2649671642355845445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,5 +227,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a6e842191490440a9006cb479c2a9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 4
+  Health: 2
   parentEnemy: {fileID: 2649671642355845445}
