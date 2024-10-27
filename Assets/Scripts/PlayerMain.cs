@@ -180,5 +180,20 @@ public class Player : MonoBehaviour
             }
         }
     }
+    
+    private void killPlayer()
+    {
+        Destroy(gameObject);
+    }
+
+
+    private void OnEnable()
+    {
+        Health.OnPlayerDeath += killPlayer;
+    }
+    private void OnDisable()
+    {
+        Health.OnPlayerDeath -= killPlayer;
+    }
 
 }

@@ -52,6 +52,9 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.tag != "Player")
         {
             Destroy(gameObject);
+            //edit by matthew
+            //basically just deals damage to enemy that it hits
+            collision.gameObject.GetComponent<EnemyHealth>().EnemyDamaged(1);
         }
     }
 
