@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3322917796637482827}
   - component: {fileID: 4925663110240206395}
   - component: {fileID: 2649671642355845445}
+  - component: {fileID: -1511030628047199263}
   m_Layer: 0
   m_Name: Running Enemy
   m_TagString: Untagged
@@ -174,4 +175,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9eabcc9bb3e9e47439b67ad0a1697aa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  player: {fileID: 5368966409921589157, guid: b7879cb49647cea4aa88aa997c60a7e7, type: 3}
+  moveSpeed: 2
+  hp: {fileID: -1511030628047199263}
+--- !u!114 &-1511030628047199263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081219691268633862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a6e842191490440a9006cb479c2a9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 4
