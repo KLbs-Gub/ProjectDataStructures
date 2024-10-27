@@ -9,11 +9,13 @@ public class Room : MonoBehaviour
     [SerializeField] private GameObject[] entranceBlockers = new GameObject[4];
 
     [HideInInspector] public bool roomComplete = false;
-    [HideInInspector] public int wavePopulation = Random.Range(7, 18);
+    [HideInInspector] public int wavePopulation;
 
     // Start is called before the first frame update
     private void Awake()
     {
+        wavePopulation = Random.Range(7, 18);
+
         foreach (GameObject gameObject in entranceBlockers)
         {
             gameObject.SetActive(false);
