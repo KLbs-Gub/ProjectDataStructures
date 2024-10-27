@@ -8,6 +8,9 @@ public class Room : MonoBehaviour
 
     [SerializeField] private GameObject[] entranceBlockers = new GameObject[4];
 
+    [HideInInspector] public bool roomComplete = false;
+    [HideInInspector] public int wavePopulation = Random.Range(7, 18);
+
     // Start is called before the first frame update
     private void Awake()
     {
