@@ -169,12 +169,17 @@ public class Player : MonoBehaviour
             {
                 Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.15f);
 
-                Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
-                shot.Speed = 11f;
-                // I add (smoothedMovement / 6) to transfer some movement velocity to the bullet
-                // we may need to weak this later.
-                shot.ShotVector = shootDirection.normalized + (smoothedMovement / 6);
-                // Debug.Log("ShotVector: " + shot.ShotVector);
+                //for (int i = -1; i <= 1; i++)
+                //{
+                    Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
+                    shot.Speed = 11f;
+
+                    //shootDirection.y = .5f * i;
+                    // I add (smoothedMovement / 6) to transfer some movement velocity to the bullet
+                    // we may need to weak this later.
+                    shot.ShotVector = shootDirection.normalized + (smoothedMovement / 6);
+                    // Debug.Log("ShotVector: " + shot.ShotVector);
+                //}
 
                 shootTimer = 30 - fireRate;
             }
