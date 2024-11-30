@@ -9,7 +9,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player Variables
-    private float moveSpeed = 5.25f;
+    private float moveSpeed = 4.5f;
 
     // Directions: 0 = down, 1 = left, -1 = right, 2 = up
     private float direction = 0;
@@ -175,9 +175,9 @@ public class Player : MonoBehaviour
                     shot.Speed = 11f;
 
                     //shootDirection.y = .5f * i;
-                    // I add (smoothedMovement / 6) to transfer some movement velocity to the bullet
-                    // we may need to weak this later.
-                    shot.ShotVector = shootDirection.normalized + (smoothedMovement / 6);
+                    // I add (smoothedMovement / 5) to transfer some movement velocity to the bullet
+                    // we may need to tweak this later.
+                    shot.ShotVector = shootDirection.normalized + (smoothedMovement / 5);
                     // Debug.Log("ShotVector: " + shot.ShotVector);
                 //}
 
