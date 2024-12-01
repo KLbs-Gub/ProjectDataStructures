@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 2649671642355845445}
   - component: {fileID: 4925663110240206395}
   - component: {fileID: -1511030628047199263}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Running Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -202,6 +202,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 640
   moveSpeed: 2
 --- !u!114 &4925663110240206395
 MonoBehaviour:

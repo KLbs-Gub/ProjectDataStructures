@@ -9,14 +9,14 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Player Variables
-    private float moveSpeed = 4.5f;
+    public float moveSpeed = 4.5f;
 
     // Directions: 0 = down, 1 = left, -1 = right, 2 = up
     private float direction = 0;
 
     private Rigidbody2D rb;
     private Animator animator;
-    [SerializeField] private Bullet bullet;
+    public Bullet bullet;
 
     private Vector2 movement;
     private Vector2 smoothedMovement;
