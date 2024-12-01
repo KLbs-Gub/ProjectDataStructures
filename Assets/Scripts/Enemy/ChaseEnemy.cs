@@ -61,7 +61,7 @@ public class ChaseEnemy : EnemyBase
                 Debug.DrawRay(this.transform.position, trueTarget - this.transform.position, Color.yellow);
 
                 moveDirection.x = direction;
-                moveDirection.y = -MathF.Sign((transform.position.y * transform.position.y) - (trueTarget.y * trueTarget.y));
+                moveDirection.y = MathF.Sign(trueTarget.y - transform.position.y);
             }
             else
             {
