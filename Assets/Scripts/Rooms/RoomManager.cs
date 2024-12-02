@@ -60,6 +60,8 @@ public class RoomManager : MonoBehaviour
                     // Make sure the player spawn room doesn't have any enemies.
                     newRoom.roomType = "safe";
 
+                    AddLayout("start");
+
                     playerRoomCountdown = 99999;
                 }
                 else if (shopRoomCountdown < 0)
@@ -104,7 +106,7 @@ public class RoomManager : MonoBehaviour
         int roomSelect;
         if (layoutType == "normal")
         {
-            roomSelect = Random.Range(0, levels[currentLevel].normalRoomLayoutsList.Count);
+            roomSelect = Random.Range(1, levels[currentLevel].normalRoomLayoutsList.Count);
 
             GameObject layout = Instantiate(levels[currentLevel].normalRoomLayoutsList[roomSelect], transformOffset, transform.rotation);
         }
@@ -119,6 +121,10 @@ public class RoomManager : MonoBehaviour
             roomSelect = Random.Range(0, levels[currentLevel].bossRoomLayoutsList.Count);
 
             GameObject layout = Instantiate(levels[currentLevel].bossRoomLayoutsList[roomSelect], transformOffset, transform.rotation);
+        }
+        else if (layoutType == "start")
+        {
+            GameObject layout = Instantiate(levels[currentLevel].normalRoomLayoutsList[0], transformOffset, transform.rotation);
         }
     }
 }

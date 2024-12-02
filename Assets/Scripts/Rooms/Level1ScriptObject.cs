@@ -38,6 +38,16 @@ public class Level1ScriptObject : ScriptableObject
     #endregion Tooltip
     public List<GameObject> bossRoomLayoutsList;
 
+    #region Header LEVEL ENEMIES
+    [Space(10)]
+    [Header("LEVEL ENEMIES")]
+    #endregion Header LEVEL ENEMIES
+
+    #region Tooltip
+    [Tooltip("The enemies that can appear in this level")]
+    #endregion Tooltip
+    public List<EnemyBase> availableEnemiesList;
+
     #region Validation
 
 #if UNITY_EDITOR

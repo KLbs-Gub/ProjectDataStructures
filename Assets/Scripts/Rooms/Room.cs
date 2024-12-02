@@ -10,7 +10,7 @@ public class Room : MonoBehaviour
     [SerializeField] private WaveManager waveManager;
 
     // types: "safe", "hostile", "boss"
-    [HideInInspector] public string roomType = "safe";
+    [HideInInspector] public string roomType = "hostile";
 
     // Start is called before the first frame update
     private void Awake()
@@ -24,6 +24,8 @@ public class Room : MonoBehaviour
     void Start()
     {
         mainCam = GameObject.Find("Main Camera");
+
+        waveManager.SelfDisable();
     }
 
     // Update is called once per frame
@@ -36,6 +38,12 @@ public class Room : MonoBehaviour
         if (mainCam != null)
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
+
+            // Only activate the wave manager if the room is hostile or boss.
+            if (roomType != "safe")
+            {
+                waveManager.SelfActivate();
+            }
         }
     }
 
