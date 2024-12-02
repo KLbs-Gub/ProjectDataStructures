@@ -11,7 +11,7 @@ public class EnemyHealth : MonoBehaviour
     public EnemyBase parentEnemy;
     
     //Enemy health function, made seperately so we could paste into other enemies
-    public void EnemyDamaged(int amount)
+    public void EnemyDamaged(float amount)
     {
         Health -= amount;
         if (Health <= 0)

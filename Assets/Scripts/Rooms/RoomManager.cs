@@ -58,7 +58,7 @@ public class RoomManager : MonoBehaviour
                     camera.transform.position = transformOffset;
 
                     // Make sure the player spawn room doesn't have any enemies.
-                    newRoom.roomState = 0;
+                    newRoom.roomType = "safe";
 
                     playerRoomCountdown = 99999;
                 }
@@ -66,17 +66,26 @@ public class RoomManager : MonoBehaviour
                 {
                     AddLayout("shop");
 
+                    // Make sure the shop room doesn't have any enemies.
+                    newRoom.roomType = "safe";
+
                     shopRoomCountdown = 99999;
                 }
                 else if (bossRoomCountdown < 0)
                 {
                     AddLayout("boss");
 
+                    // This room type has the logic for bosses.
+                    newRoom.roomType = "boss";
+
                     bossRoomCountdown = 99999;
                 }
                 else
                 {
                     AddLayout("normal");
+
+                    // This is a normal hostile room
+                    newRoom.roomType = "hostile";
                 }
                 #endregion
 

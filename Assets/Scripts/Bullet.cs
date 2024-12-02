@@ -14,6 +14,8 @@ public class Bullet : MonoBehaviour
     [Range(1, 10)]
     [SerializeField] private float lifeTime = 5f;
 
+    public float damage = 1f;
+
     private Vector2 movement;
     private Rigidbody2D rb;
 
@@ -54,7 +56,7 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             //edit by matthew
             //basically just deals damage to enemy that it hits
-            collision.gameObject.GetComponent<EnemyHealth>().EnemyDamaged(1);
+            collision.gameObject.GetComponent<EnemyHealth>().EnemyDamaged(damage);
         }
     }
 

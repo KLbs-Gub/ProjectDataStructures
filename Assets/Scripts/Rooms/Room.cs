@@ -7,18 +7,14 @@ public class Room : MonoBehaviour
     private GameObject mainCam;
 
     [SerializeField] private GameObject[] entranceBlockers = new GameObject[4];
+    [SerializeField] private WaveManager waveManager;
 
-    // 2 = waiting, 1 = active, 0 = complete
-    [HideInInspector] public int roomState = 2;
-    [HideInInspector] public int wavePopulation;
-    private float spawnTimer = 50f;
-    public GameObject enemy;
+    // types: "safe", "hostile", "boss"
+    [HideInInspector] public string roomType = "safe";
 
     // Start is called before the first frame update
     private void Awake()
     {
-        wavePopulation = 8;
-
         foreach (GameObject gameObject in entranceBlockers)
         {
             gameObject.SetActive(false);
@@ -33,25 +29,6 @@ public class Room : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (roomState == 1 && wavePopulation > 0 && spawnTimer < 0)
-        {
-            Vector2 transformOffset = new Vector2(transform.position.x, transform.position.y + 9);
-            Instantiate(enemy, transformOffset, transform.rotation);
-            
-            transformOffset = new Vector2(transform.position.x, transform.position.y - 9);
-            Instantiate(enemy, transformOffset, transform.rotation);
-
-            transformOffset = new Vector2(transform.position.x + 11, transform.position.y);
-            Instantiate(enemy, transformOffset, transform.rotation);
-
-            transformOffset = new Vector2(transform.position.x - 11, transform.position.y);
-            Instantiate(enemy, transformOffset, transform.rotation);
-
-            wavePopulation -= 4;
-            spawnTimer = 50f;
-        }
-
-        spawnTimer--;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -59,11 +36,6 @@ public class Room : MonoBehaviour
         if (mainCam != null)
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
-        }
-
-        if (roomState == 2)
-        {
-            roomState = 1;
         }
     }
 
