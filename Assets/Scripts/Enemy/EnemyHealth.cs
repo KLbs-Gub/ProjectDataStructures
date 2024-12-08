@@ -16,7 +16,6 @@ public class EnemyHealth : MonoBehaviour
         Health -= amount;
         if (Health <= 0)
         {
-            Debug.Log("Enemy Killed");
             parentEnemy.EnemyKilled();
         }
     }

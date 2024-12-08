@@ -87,7 +87,10 @@ public class Player : MonoBehaviour
 
         rb.velocity = smoothedMovement * moveSpeed;
 
-        shootTimer--;
+        if (shootTimer > 0f)
+        {
+            shootTimer--;
+        }
     }
 
     // Gets movement from inputs
@@ -99,9 +102,10 @@ public class Player : MonoBehaviour
         movement = new Vector2(mx, my).normalized;
     }
 
-  
+
 
     //angle checking for what sprites to use
+    // by Matthew Kopel
     private void SpriteDirection()
     {
         if (Input.GetAxisRaw("Fire1") != 0 || Input.GetAxisRaw("Fire2") != 0)

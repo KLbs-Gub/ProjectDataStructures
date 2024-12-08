@@ -40,16 +40,19 @@ public class ChaseEnemy : EnemyBase
         // this is needed for line of sight checks to work.
         Vector3 trueTarget = new Vector3(target.transform.position.x, target.transform.position.y - 0.37f, target.transform.position.z);
 
-        // From 'How to make Line of Sight in Unity 2D with Raycast' tutorial
+        // This region is based on 'How to make Line of Sight in Unity 2D with Raycast' tutorial
+        #region LineOfSight
+        // Line of sight stuff by Kieran Pounds
         RaycastHit2D isBlocked = Physics2D.Raycast(this.transform.position, trueTarget - this.transform.position, 4000f, mask);
 
         if (isBlocked.collider != null)
         {
             if (isBlocked.collider.gameObject.CompareTag("Player"))
             {
-                //takes position of player and always moves towards it
+                //takes position of player and always moves towards it - Matthew Kopel
                 transform.position = Vector2.MoveTowards(this.transform.position, trueTarget,
                     moveSpeed * Time.deltaTime);
+
                 if (target.transform.position.x < transform.position.x)
                 {
                     direction = -1;
@@ -69,6 +72,7 @@ public class ChaseEnemy : EnemyBase
                 Debug.DrawRay(this.transform.position, trueTarget - this.transform.position, Color.red);
             }
         }
+        #endregion
     }
 
     public override void EnemyKilled()
