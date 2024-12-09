@@ -71,7 +71,12 @@ public class ChaseEnemy : EnemyBase
             else
             {
                 rb.velocity = moveDirection * moveSpeed;
-                direction = Convert.ToInt32(moveDirection.x);
+                
+                // This prevents enemies from being invisible
+                if (moveDirection.x != 0)
+                {
+                    direction = Convert.ToInt32(moveDirection.x);
+                }
                 Debug.DrawRay(this.transform.position, trueTarget - this.transform.position, Color.red);
             }
         }

@@ -15,7 +15,7 @@ public class WaveManager : MonoBehaviour
     public int spawnAmount = 1;
 
     private List<EnemyBase> possibleEnemies = new List<EnemyBase>();
-    private float spawnTimer = 65f;
+    private float spawnTimer = 35f;
 
     // Start is called before the first frame update
     void Start()
