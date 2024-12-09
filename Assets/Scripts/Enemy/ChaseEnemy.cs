@@ -16,6 +16,7 @@ public class ChaseEnemy : EnemyBase
     private int direction = 1;
     private Rigidbody2D rb;
     private Vector2 moveDirection = new Vector2(0, 0);
+    private float spawnTimer = 75f;
 
     private void Awake()
     {
@@ -65,19 +66,51 @@ public class ChaseEnemy : EnemyBase
 
                 moveDirection.x = direction;
                 moveDirection.y = MathF.Sign(trueTarget.y - transform.position.y);
+                rb.velocity = new Vector2(0.01f, 0.01f);
             }
             else
             {
                 rb.velocity = moveDirection * moveSpeed;
+                direction = Convert.ToInt32(moveDirection.x);
                 Debug.DrawRay(this.transform.position, trueTarget - this.transform.position, Color.red);
             }
         }
         #endregion
+
+        if (spawnTimer <= 0)
+        {
+            GetComponent<Collider2D>().enabled = true;
+        }
+        else
+        {
+            spawnTimer--;
+        }
+    }
+
+    public override void EnterRoom(string direction)
+    {
+        GetComponent<Collider2D>().enabled = false;
+
+        if (direction == "EntranceUp")
+        {
+            moveDirection = new Vector2(0, -1);
+        }
+        else if (direction == "EntranceDown")
+        {
+            moveDirection = new Vector2(0, 1);
+        }
+        else if (direction == "EntranceLeft")
+        {
+            moveDirection = new Vector2(1, 0);
+        }
+        else if (direction == "EntranceRight")
+        {
+            moveDirection = new Vector2(-1, 0);
+        }
     }
 
     public override void EnemyKilled()
     {
         Destroy(gameObject);
     }
-
 }

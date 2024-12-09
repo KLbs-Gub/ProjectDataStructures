@@ -36,7 +36,7 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (mainCam != null)
+        if (mainCam != null && collision.gameObject.tag == "Player")
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
 
@@ -56,6 +56,9 @@ public class Room : MonoBehaviour
             {
                 //Debug.Log("Blocked an: " +  gameObject.name);
                 gameObject.SetActive(true);
+
+                // Make it so enemies don't spawn out of bounds.
+                waveManager.validSpawnPoints.Remove(aBlocker);
             }
         }
     }

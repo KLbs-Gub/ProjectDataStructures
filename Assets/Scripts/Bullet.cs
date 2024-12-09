@@ -51,7 +51,7 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player" && hasCollided == false)
+        if (collision.gameObject.CompareTag("Enemy") && hasCollided == false)
         {
             // Need this to prevent doing damage twice in one collision
             hasCollided = true;
@@ -60,6 +60,11 @@ public class Bullet : MonoBehaviour
             //edit by matthew
             //basically just deals damage to enemy that it hits
             collision.gameObject.GetComponent<EnemyHealth>().EnemyDamaged(damage);
+        }
+        else if (!collision.gameObject.CompareTag("Room"))
+        {
+            hasCollided = true;
+            Destroy(gameObject);
         }
     }
 

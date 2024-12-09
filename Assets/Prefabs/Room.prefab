@@ -1514,6 +1514,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 5626739483502668216}
+  validSpawnPoints:
+  - EntranceUp
+  - EntranceDown
+  - EntranceLeft
+  - EntranceRight
+  timerStartValue: 65
+  spawnAmount: 1
 --- !u!1 &5737528792732771195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1834,7 @@ GameObject:
   - component: {fileID: 5967932242152797055}
   m_Layer: 6
   m_Name: Room
-  m_TagString: Untagged
+  m_TagString: Room
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

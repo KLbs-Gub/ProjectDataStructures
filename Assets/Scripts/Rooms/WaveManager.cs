@@ -31,12 +31,7 @@ public class WaveManager : MonoBehaviour
         spawnTimer--;
         if (spawnAmount > 0 && spawnTimer <= 0f)
         {
-            int random = Random.Range(0, possibleEnemies.Count);
-            EnemyBase enemy = Instantiate(possibleEnemies[random], transform.position, transform.rotation);
-            enemy.transform.parent = transform;
-
-            spawnAmount--;
-            spawnTimer = timerStartValue;
+            SpawnEnemy();
         }
 
         if (transform.childCount - 4 == 0 && spawnAmount <= 0)
@@ -45,6 +40,38 @@ public class WaveManager : MonoBehaviour
         }
         // EnemyBase enemy = Instantiate(possibleEnemies[0], transform.position, transform.rotation);
         // enemy.transform.parent = transform;
+    }
+
+    public void SpawnEnemy()
+    {
+        // spawn a random enemy from the level's enemy list
+        int random = Random.Range(0, validSpawnPoints.Count);
+        Vector2 spawnLocation = transform.position;
+
+        if (validSpawnPoints[random] == "EntranceUp")
+        {
+            spawnLocation = new Vector2(transform.position.x, transform.position.y + 6f);
+        }
+        else if (validSpawnPoints[random] == "EntranceDown")
+        {
+            spawnLocation = new Vector2(transform.position.x, transform.position.y - 6f);
+        }
+        else if (validSpawnPoints[random] == "EntranceLeft")
+        {
+            spawnLocation = new Vector2(transform.position.x - 9.9f, transform.position.y);
+        }
+        else if (validSpawnPoints[random] == "EntranceRight")
+        {
+            spawnLocation = new Vector2(transform.position.x + 9.9f, transform.position.y);
+        }
+
+        EnemyBase enemy = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)], 
+            spawnLocation, transform.rotation);
+        enemy.EnterRoom(validSpawnPoints[random]);
+        enemy.transform.parent = transform;
+
+        spawnAmount--;
+        spawnTimer = timerStartValue;
     }
 
     public void SelfDisable()

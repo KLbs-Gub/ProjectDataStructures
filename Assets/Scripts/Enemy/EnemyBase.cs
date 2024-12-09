@@ -6,5 +6,7 @@ using UnityEngine;
 
 public abstract class EnemyBase : MonoBehaviour
 {
+    public abstract void EnterRoom(string direction);
+
     public abstract void EnemyKilled();
 }
