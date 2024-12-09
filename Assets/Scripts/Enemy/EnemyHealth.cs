@@ -9,7 +9,7 @@ public class EnemyHealth : MonoBehaviour
 {
     public float Health = 1f;
     public EnemyBase parentEnemy;
-    
+
     //Enemy health function, made seperately so we could paste into other enemies
     public void EnemyDamaged(float amount)
     {

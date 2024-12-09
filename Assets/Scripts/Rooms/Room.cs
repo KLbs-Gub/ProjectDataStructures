@@ -25,6 +25,7 @@ public class Room : MonoBehaviour
     {
         mainCam = GameObject.Find("Main Camera");
 
+        waveManager.spawnAmount = Random.Range(7, 12);
         waveManager.SelfDisable();
     }
 

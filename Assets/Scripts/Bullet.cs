@@ -18,8 +18,8 @@ public class Bullet : MonoBehaviour
 
     private Vector2 movement;
     private Rigidbody2D rb;
-
     private Vector2 shotVector;
+    private bool hasCollided = false;
 
     // Gets and Sets
 
@@ -51,8 +51,11 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag != "Player")
+        if (collision.gameObject.tag != "Player" && hasCollided == false)
         {
+            // Need this to prevent doing damage twice in one collision
+            hasCollided = true;
+
             Destroy(gameObject);
             //edit by matthew
             //basically just deals damage to enemy that it hits
