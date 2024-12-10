@@ -82,9 +82,11 @@ public class ChaseEnemy : EnemyBase
         }
         #endregion
 
-        if (spawnTimer <= 0)
+        if (spawnTimer <= 0 && GetComponent<Collider2D>().enabled != true)
         {
             GetComponent<Collider2D>().enabled = true;
+            moveDirection.x = MathF.Sign(trueTarget.x - transform.position.x);
+            moveDirection.y = MathF.Sign(trueTarget.y - transform.position.y);
         }
         else
         {
