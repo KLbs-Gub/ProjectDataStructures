@@ -13,6 +13,7 @@ public class Health : MonoBehaviour
     //events, can tie multiple things to that get triggered when the event is called
     public static event Action OnPlayerDamaged;
     public static event Action OnPlayerDeath;
+    public static event Action OnPlayerHealed;
 
     // Start is called before the first frame update
     private void Start()
@@ -43,5 +44,7 @@ public class Health : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
+
+        OnPlayerHealed?.Invoke();
     }
 }

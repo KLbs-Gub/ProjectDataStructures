@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2649671642355845445}
   - component: {fileID: 4925663110240206395}
   - component: {fileID: -1511030628047199263}
+  - component: {fileID: 7008353859607488800}
   m_Layer: 2
   m_Name: Running Enemy
   m_TagString: Enemy
@@ -232,3 +233,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 2
   parentEnemy: {fileID: 2649671642355845445}
+--- !u!114 &7008353859607488800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4081219691268633862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d7826ba638989843b2fe21d27483cf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coin: {fileID: 429292496333072447, guid: b2f1099432c88b240a1fd9bba2785a16, type: 3}
+  heart: {fileID: 5633141330459713518, guid: 8d502b2d90d15954bae95eb9f0a11ad1, type: 3}

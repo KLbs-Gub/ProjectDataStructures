@@ -15,12 +15,14 @@ public class ChaseEnemy : EnemyBase
 
     private int direction = 1;
     private Rigidbody2D rb;
+    private PickupDropper dropper;
     private Vector2 moveDirection = new Vector2(0, 0);
     private float spawnTimer = 75f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        dropper = GetComponent<PickupDropper>();
     }
 
     // Start is called before the first frame update
@@ -84,6 +86,8 @@ public class ChaseEnemy : EnemyBase
 
         if (spawnTimer <= 0 && GetComponent<Collider2D>().enabled != true)
         {
+            // Once the spawn timer is done, reenable collision and make sure that
+            // the enemy moves towards its target if it doesn't immediately see it.
             GetComponent<Collider2D>().enabled = true;
             moveDirection.x = MathF.Sign(trueTarget.x - transform.position.x);
             moveDirection.y = MathF.Sign(trueTarget.y - transform.position.y);
@@ -118,6 +122,7 @@ public class ChaseEnemy : EnemyBase
 
     public override void EnemyKilled()
     {
+        dropper.DropItem();
         Destroy(gameObject);
     }
 }

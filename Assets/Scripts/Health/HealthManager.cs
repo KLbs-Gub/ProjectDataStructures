@@ -14,11 +14,13 @@ public class HealthManager : MonoBehaviour
     private void OnEnable()
     {
         Health.OnPlayerDamaged += DrawHearts;
+        Health.OnPlayerHealed += DrawHearts;
     }
     //calls it to shut it off
     private void OnDisable()
     {
         Health.OnPlayerDamaged -= DrawHearts;
+        Health.OnPlayerHealed -= DrawHearts;
     }
 
     private void Start()
