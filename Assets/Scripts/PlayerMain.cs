@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [SelectionBase]
 public class Player : MonoBehaviour
@@ -212,6 +213,7 @@ public class Player : MonoBehaviour
     private void killPlayer()
     {
         Destroy(gameObject);
+        SceneManager.LoadSceneAsync("DeathScreen");
     }
 
 
