@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 4607904736792240806}
   - component: {fileID: 6987274675314683637}
   - component: {fileID: 1258182473543085663}
+  - component: {fileID: 8754545084034219814}
   m_Layer: 0
   m_Name: ShopKeep
   m_TagString: Untagged
@@ -137,6 +138,55 @@ MonoBehaviour:
   - {fileID: 26926671761243368}
   - {fileID: 7508725433890114211}
   - {fileID: 4239970756749709904}
+  shopItems:
+  - {fileID: 2413109733383794760, guid: 54797ca92fa901d40a621d6f3a3693d5, type: 3}
+  - {fileID: 2413109733383794760, guid: d32a607c6c8ced740b4a6feed2b0b06d, type: 3}
+  - {fileID: 2413109733383794760, guid: 587e863630c12644ba4068a51655e433, type: 3}
+--- !u!61 &8754545084034219814
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833445455429553468}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.4, y: 1.6416667}
+    newSize: {x: 1.4, y: 1.6416667}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 17.5, y: 9.5}
+  m_EdgeRadius: 0
 --- !u!1 &3258191561251661299
 GameObject:
   m_ObjectHideFlags: 0

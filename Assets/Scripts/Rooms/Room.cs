@@ -43,7 +43,7 @@ public class Room : MonoBehaviour
             collision.GetComponent<Player>().currentRoomPosition = transform.position;
 
             // Only activate the wave manager if the room is hostile or boss.
-            if (roomType != "safe")
+            if (roomType != "safe" && waveManager != null)
             {
                 waveManager.SelfActivate();
             }

@@ -41,7 +41,7 @@ public class WaveManager : MonoBehaviour
         if (transform.childCount - 4 == 0 && spawnAmount <= 0)
         {
             OnWaveComplete?.Invoke();
-            SelfDisable();
+            Destroy(gameObject);
         }
         // EnemyBase enemy = Instantiate(possibleEnemies[0], transform.position, transform.rotation);
         // enemy.transform.parent = transform;
