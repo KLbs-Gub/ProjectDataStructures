@@ -30,7 +30,7 @@ public class WaveManager : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         spawnTimer--;
         if (spawnAmount > 0 && spawnTimer <= 0f)

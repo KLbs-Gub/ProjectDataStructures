@@ -12,11 +12,11 @@ public class PickupDropper : MonoBehaviour
     public void DropItem()
     {
         int randomChance = Random.Range(0, 100);
-        if (randomChance <= 3)
+        if (randomChance <= 6)
         {
             GameObject pickup = Instantiate(heart, transform.position, transform.rotation);
         }
-        else if (randomChance > 3 && randomChance <= 55)
+        else if (randomChance > 6 && randomChance <= 85)
         {
             GameObject pickup = Instantiate(coin, transform.position, transform.rotation);
         }

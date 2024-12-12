@@ -12,6 +12,7 @@ public class ChaseEnemy : EnemyBase
     [HideInInspector] public GameObject target;
     public LayerMask mask;
     public float moveSpeed = 1f;
+    public bool hasSight = false;
 
     private int direction = 1;
     private Rigidbody2D rb;
@@ -52,6 +53,8 @@ public class ChaseEnemy : EnemyBase
         {
             if (isBlocked.collider.gameObject.CompareTag("Player"))
             {
+                hasSight = true;
+
                 //takes position of player and always moves towards it - Matthew Kopel
                 transform.position = Vector2.MoveTowards(this.transform.position, trueTarget,
                     moveSpeed * Time.deltaTime);
@@ -72,6 +75,7 @@ public class ChaseEnemy : EnemyBase
             }
             else
             {
+                hasSight = false;
                 rb.velocity = moveDirection * moveSpeed;
                 
                 // This prevents enemies from being invisible

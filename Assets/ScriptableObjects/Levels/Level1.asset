@@ -25,3 +25,4 @@ MonoBehaviour:
   - {fileID: 1828656503466776389, guid: 65a0185fc861b9343a79bcd752c5b4cd, type: 3}
   availableEnemiesList:
   - {fileID: 2649671642355845445, guid: dcdf4d9efb2ff744895a1641ca2e2937, type: 3}
+  - {fileID: 2649671642355845445, guid: 98ac5372832acbd4d853c27a1aa2e9d0, type: 3}
