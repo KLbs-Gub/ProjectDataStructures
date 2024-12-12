@@ -40,6 +40,8 @@ public class Room : MonoBehaviour
         {
             mainCam.GetComponent<CameraMain>().TargetPoint = new Vector3(transform.position.x, transform.position.y, 1);
 
+            collision.GetComponent<Player>().currentRoomPosition = transform.position;
+
             // Only activate the wave manager if the room is hostile or boss.
             if (roomType != "safe")
             {

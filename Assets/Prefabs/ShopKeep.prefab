@@ -41,6 +41,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4607904736792240806}
   - component: {fileID: 6987274675314683637}
+  - component: {fileID: 1258182473543085663}
   m_Layer: 0
   m_Name: ShopKeep
   m_TagString: Untagged
@@ -119,6 +120,23 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1258182473543085663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833445455429553468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57cc1f6213fbd544689d55974e198f8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemSpawnPoints:
+  - {fileID: 3258191561251661299}
+  - {fileID: 26926671761243368}
+  - {fileID: 7508725433890114211}
+  - {fileID: 4239970756749709904}
 --- !u!1 &3258191561251661299
 GameObject:
   m_ObjectHideFlags: 0

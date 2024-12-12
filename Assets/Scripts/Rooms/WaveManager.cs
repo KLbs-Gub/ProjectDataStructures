@@ -1,5 +1,6 @@
 // Written by Kieran Pounds
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,9 @@ public class WaveManager : MonoBehaviour
 
     private List<EnemyBase> possibleEnemies = new List<EnemyBase>();
     private float spawnTimer = 35f;
+
+    // Events
+    public static event Action OnWaveComplete;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +40,7 @@ public class WaveManager : MonoBehaviour
 
         if (transform.childCount - 4 == 0 && spawnAmount <= 0)
         {
+            OnWaveComplete?.Invoke();
             SelfDisable();
         }
         // EnemyBase enemy = Instantiate(possibleEnemies[0], transform.position, transform.rotation);
@@ -45,7 +50,7 @@ public class WaveManager : MonoBehaviour
     public void SpawnEnemy()
     {
         // spawn a random enemy from the level's enemy list
-        int random = Random.Range(0, validSpawnPoints.Count);
+        int random = UnityEngine.Random.Range(0, validSpawnPoints.Count);
         Vector2 spawnLocation = transform.position;
 
         // If else chain to spawn the enemy at one of the room entrances.
@@ -66,7 +71,7 @@ public class WaveManager : MonoBehaviour
             spawnLocation = new Vector2(transform.position.x + 9.9f, transform.position.y);
         }
 
-        EnemyBase enemy = Instantiate(possibleEnemies[Random.Range(0, possibleEnemies.Count)], 
+        EnemyBase enemy = Instantiate(possibleEnemies[UnityEngine.Random.Range(0, possibleEnemies.Count)], 
             spawnLocation, transform.rotation);
         enemy.EnterRoom(validSpawnPoints[random]);
         enemy.transform.parent = transform;

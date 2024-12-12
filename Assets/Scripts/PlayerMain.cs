@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     private Vector2 smoothedMovement;
     private Vector2 smoothedVelocity;
 
+    public Vector2 currentRoomPosition;
+
     //Gun Variables
     [Range(0.0f, 30.0f)][SerializeField] private float fireRate = 0.0f;
     private float bulletDamage = 1.0f;
