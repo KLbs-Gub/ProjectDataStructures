@@ -31,7 +31,7 @@ public class Room : MonoBehaviour
         }
         else if (roomType == "boss")
         {
-            waveManager.timerStartValue = 120f;
+            waveManager.timerStartValue = 85f;
             waveManager.endsGame = true;
             waveManager.spawnAmount = Random.Range(20, 30);
         }
