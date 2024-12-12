@@ -36,6 +36,7 @@ public class Health : MonoBehaviour
             OnPlayerDeath?.Invoke();
         }
     }
+
     public void Heal(int amount)
     {
         currentHealth += amount;

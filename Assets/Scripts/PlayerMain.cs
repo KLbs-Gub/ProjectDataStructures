@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     //Gun Variables
     [Range(0.0f, 30.0f)][SerializeField] private float fireRate = 0.0f;
+    private float bulletDamage = 1.0f;
     private float shootTimer;
     private Vector2 shootDirection;
 
@@ -34,11 +35,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -93,6 +89,27 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AlterStat(string statToChange, float value)
+    {
+        if (statToChange == "damage")
+        {
+            bulletDamage += value;
+        }
+        if (statToChange == "speed")
+        {
+            moveSpeed += value;
+            
+            if (moveSpeed > 8f)
+            {
+                moveSpeed = 8f;
+            }
+        }
+        if (statToChange == "firerate")
+        {
+            fireRate += value;
+        }
+    }
+
     // Gets movement from inputs
     private void MovementInput()
     {
@@ -101,8 +118,6 @@ public class Player : MonoBehaviour
 
         movement = new Vector2(mx, my).normalized;
     }
-
-
 
     //angle checking for what sprites to use
     // by Matthew Kopel
@@ -156,6 +171,7 @@ public class Player : MonoBehaviour
             direction = sx * -1;
         }
     }
+
     private void Shoot()
     {
         if (shootDirection.y == 0)
@@ -173,23 +189,26 @@ public class Player : MonoBehaviour
             {
                 Vector2 shotOrigin = new Vector2(transform.position.x + shootDirection.x, (transform.position.y + shootDirection.y) - 0.15f);
 
-                //for (int i = -1; i <= 1; i++)
-                //{
-                    Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
-                    shot.Speed = 11f;
+                Bullet shot = Instantiate(bullet, shotOrigin, transform.rotation);
+                shot.Speed = 11f;
+                shot.damage = bulletDamage;
 
-                    //shootDirection.y = .5f * i;
-                    // I add (smoothedMovement / 5) to transfer some movement velocity to the bullet
-                    // we may need to tweak this later.
-                    shot.ShotVector = shootDirection.normalized + (smoothedMovement / 5);
-                    // Debug.Log("ShotVector: " + shot.ShotVector);
-                //}
+                // I add (smoothedMovement / 5) to transfer some movement velocity to the bullet
+                // we may need to tweak this later.
+                shot.ShotVector = shootDirection.normalized + (smoothedMovement / 5);
 
                 shootTimer = 30 - fireRate;
             }
         }
     }
-    
+
+    // This commented code was for a possible spreadshot additions
+    // Never got around to it.
+    //for (int i = -1; i <= 1; i++)
+    //{
+    //shootDirection.y = .5f * i;
+    //}
+
     private void killPlayer()
     {
         Destroy(gameObject);

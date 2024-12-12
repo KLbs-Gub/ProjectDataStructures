@@ -22,11 +22,6 @@ public class Wallet : MonoBehaviour
     {
         playerCash -= cashToRemove;
 
-        if (playerCash < 0)
-        {
-            playerCash = 0;
-        }
-
         OnMoneySpend?.Invoke();
     }
 }

@@ -35,7 +35,8 @@ public class WalletUI : MonoBehaviour
     {
         if (textUI != null)
         {
-            textUI.text = Convert.ToString(playerWallet.playerCash);
+            textUI.text = "$";
+            textUI.text += Convert.ToString(playerWallet.playerCash);
         }
     }
 }
