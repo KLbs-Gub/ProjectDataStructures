@@ -373,6 +373,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 4.5
   bullet: {fileID: 2971721082991730220, guid: 141265928b24cd74b99ce0f984cc30c7, type: 3}
+  currentRoomPosition: {x: 0, y: 0}
   fireRate: 0
 --- !u!114 &8268782764784333003
 MonoBehaviour:
@@ -387,7 +388,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 3
-  currentHealth: 1
+  currentHealth: 3
+  invincibleFrames: 0
 --- !u!114 &4547966389176856090
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -119,6 +119,11 @@ public class Player : MonoBehaviour
         float mx = Input.GetAxisRaw("Horizontal");
         float my = Input.GetAxisRaw("Vertical");
 
+        if (Input.GetAxisRaw("QUIT") > 0)
+        {
+            SceneManager.LoadSceneAsync("MainMenu");
+        }
+
         movement = new Vector2(mx, my).normalized;
     }
 
