@@ -40,6 +40,7 @@ public class StorePickup : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            // If the player has enough money.
             if (collision.gameObject.GetComponent<Wallet>().playerCash >= price)
             {
                 collision.gameObject.GetComponent<Wallet>().RemoveCash(price);

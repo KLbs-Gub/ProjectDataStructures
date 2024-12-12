@@ -89,6 +89,10 @@ public class ChaseEnemy : EnemyBase
             // Once the spawn timer is done, reenable collision and make sure that
             // the enemy moves towards its target if it doesn't immediately see it.
             GetComponent<Collider2D>().enabled = true;
+
+            // Make enemy fully visible
+            GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+
             moveDirection.x = MathF.Sign(trueTarget.x - transform.position.x);
             moveDirection.y = MathF.Sign(trueTarget.y - transform.position.y);
         }
@@ -101,6 +105,9 @@ public class ChaseEnemy : EnemyBase
     public override void EnterRoom(string direction)
     {
         GetComponent<Collider2D>().enabled = false;
+
+        // Make enemy semi-transparent while it is spawning
+        GetComponent<SpriteRenderer>().color = new Color(1f,1f,1f,0.7f);
 
         if (direction == "EntranceUp")
         {

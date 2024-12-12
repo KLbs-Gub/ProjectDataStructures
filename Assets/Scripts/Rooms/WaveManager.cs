@@ -48,6 +48,7 @@ public class WaveManager : MonoBehaviour
         int random = Random.Range(0, validSpawnPoints.Count);
         Vector2 spawnLocation = transform.position;
 
+        // If else chain to spawn the enemy at one of the room entrances.
         if (validSpawnPoints[random] == "EntranceUp")
         {
             spawnLocation = new Vector2(transform.position.x, transform.position.y + 6f);
