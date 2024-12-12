@@ -25,7 +25,17 @@ public class Room : MonoBehaviour
     {
         mainCam = GameObject.Find("Main Camera");
 
-        waveManager.spawnAmount = Random.Range(7, 12);
+        if (roomType != "boss")
+        {
+            waveManager.spawnAmount = Random.Range(7, 12);
+        }
+        else if (roomType == "boss")
+        {
+            waveManager.timerStartValue = 120f;
+            waveManager.endsGame = true;
+            waveManager.spawnAmount = Random.Range(20, 30);
+        }
+
         waveManager.SelfDisable();
     }
 

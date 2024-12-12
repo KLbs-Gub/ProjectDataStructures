@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WaveManager : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class WaveManager : MonoBehaviour
     };
     public float timerStartValue = 65f;
     public int spawnAmount = 1;
+    public bool endsGame = false;
 
     private List<EnemyBase> possibleEnemies = new List<EnemyBase>();
     private float spawnTimer = 35f;
@@ -40,6 +42,11 @@ public class WaveManager : MonoBehaviour
 
         if (transform.childCount - 4 == 0 && spawnAmount <= 0)
         {
+            if (endsGame)
+            {
+                SceneManager.LoadSceneAsync("EndScreen");
+            }
+
             OnWaveComplete?.Invoke();
             Destroy(gameObject);
         }
